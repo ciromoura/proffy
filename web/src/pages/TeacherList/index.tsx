@@ -25,7 +25,6 @@ function TeacherList(){
                 time
             }
         });
-
         setTeachers(response.data);
     }
 
@@ -78,7 +77,9 @@ function TeacherList(){
             </PageHeader>
 
             <main>
-                {teachers.map( (teacher: Teacher) => {
+            
+                {teachers.length === 0 && (<div className="noResult">Nenhum(a) professor(a) encontrado(a) com a sua pesquisa</div>)}
+                {teachers.map((teacher: Teacher) => {
                     return <TeacherItem key={teacher.id} teacher={teacher} />
                 })}
             </main>
