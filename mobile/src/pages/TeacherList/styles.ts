@@ -24,6 +24,15 @@ const styles = StyleSheet.create({
         marginTop: 4,
         marginBottom: 16
     },
+    inputSelect: {
+		height: 54,
+		backgroundColor: '#FFF',
+		borderRadius: 8,
+		justifyContent: 'center',
+		paddingLeft:3,
+		marginTop: 4,
+		marginBottom: 16,
+	},
     inputGroup:{
         flexDirection: 'row',
         justifyContent: 'space-between',
