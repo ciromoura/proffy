@@ -40,6 +40,7 @@
 
 #page-teacher-list main .noResult{
     text-align: center;
+    justify-content: center;
     padding: 6.4rem;
 }
 

@@ -1,4 +1,5 @@
 import React, { useState, FormEvent } from 'react';
+import { FiAlertOctagon, FiMeh } from 'react-icons/fi';
 
 import PageHeader from '../../components/PageHeader';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
@@ -10,6 +11,8 @@ import api from '../../services/api';
 
 function TeacherList(){
     const [teachers, setTeachers] = useState([]);
+
+    const [firstTime, setFirstTime] = useState(true);
 
     const [subject, setSubject] = useState('');
     const [week_day, setWeekDay] = useState('');
@@ -26,6 +29,7 @@ function TeacherList(){
             }
         });
         setTeachers(response.data);
+        setFirstTime(false);
     }
 
     return (
@@ -77,8 +81,15 @@ function TeacherList(){
             </PageHeader>
 
             <main>
+                {firstTime && (<div className="noResult">
+                        <FiAlertOctagon/> Informe a matéria, o dia da semana e o horário.
+                    </div>)}
             
-                {teachers.length === 0 && (<div className="noResult">Nenhum(a) professor(a) encontrado(a) com a sua pesquisa</div>)}
+                {!firstTime && teachers.length === 0 && (
+                    <div className="noResult">
+                       <FiMeh /> Nenhum(a) professor(a) encontrado(a) com a sua pesquisa.
+                    </div>
+                )}
                 {teachers.map((teacher: Teacher) => {
                     return <TeacherItem key={teacher.id} teacher={teacher} />
                 })}
